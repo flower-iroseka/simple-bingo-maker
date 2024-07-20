@@ -5,7 +5,7 @@ function calculateFontSize(cellContent, cellSize, baseFontSize) {
     if (contentLength <= maxContentLength) {
         return baseFontSize;
     }
-    const scaleFactor = Math.sqrt(contentLength / maxContentLength);
+    const scaleFactor = Math.sqrt(contentLength * 1.2 / maxContentLength);
     return Math.max(baseFontSize / scaleFactor, 10); // Ensure font size doesn't go below 10px
 }
 
@@ -21,7 +21,7 @@ function generateTableHTML(tableSize) {
     // Calculate table dimensions
     const tableWidth = cellSize * tableSize;
     const tableHeight = cellSize * tableSize;
-    const baseFontSize = cellSize * 0.8 / 5; // Base font size in pixels
+    const baseFontSize = cellSize / 5; // Base font size in pixels
 
     // Get the table title
     const tableTitle = document.getElementById("tableTitle").value;

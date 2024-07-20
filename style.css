@@ -89,3 +89,20 @@ button {
 #result {
     margin-top: 20px; /* Ensure there's space between form and result */
 }
+
+/* Modern style for the submit button */
+button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 14px 20px; /* Padding for better touch area */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for background and shadow */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker shade of green on hover */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
+

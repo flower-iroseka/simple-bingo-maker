@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form Table</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="drawtable.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bingo 生成器</h1>
+        <label for="tableTitle">Bingo 标题:</label>
+        <textarea id="tableTitle" placeholder="输入表格标题" rows="2" cols="30"></textarea>
+        <br />
+        <label for="tableSize">表格大小:</label>
+        <input type="number" id="tableSize" value="5" min="1" onchange="generateForm()">
+        <form id="dataForm" onsubmit="event.preventDefault(); generateTable();">
+            <div id="formArea">
+                <!-- Initial form generation -->
+                <script>generateForm();</script>
+            </div>
+            <br>
+            <button type="submit">生成 Bingo</button>
+        </form>
+        <div id="result"></div>
+    </div>
+</body>
+</html>

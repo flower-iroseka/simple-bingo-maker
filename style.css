@@ -15,16 +15,57 @@ body, html {
     margin-top: 20px; /* Add top margin to provide space at the top */
 }
 
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 8px;
-    text-align: center;
+}
+
+/* Adjust styles for screens with a max width of 768px */
+@media (max-width: 768px) {
+    table{
+        width: 90%;
+        padding: 2px;
+        margin-left: auto;
+        margin-right: auto;
+        table-layout: fixed;
+    }
+
+    td, th {
+        width: 100%;        
+        padding: 2px;
+        font-size: 12px; /* Reduce font size */
+    }
+
+    input[type="number"],
+    textarea {
+        width: 80%;
+        padding: 2px;
+        font-size: 12px;
+        margin: 2px 0;
+        resize: none;
+        clear: both;
+    }
+
+}
+
+@media (max-width: 480px) {
+    input[type="number"],
+    textarea {
+        width: 75%;
+        padding: 2px;
+        font-size: 12px;
+        margin: 2px 0;
+        resize: none;
+        clear: both;
+    }
+
 }
 
 #formArea {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    grid-template-columns: none;
     gap: 10px;
     margin-top: 10px;
 }
@@ -33,8 +74,9 @@ input[type="number"],
 textarea {
     padding: 5px;
     font-size: 16px;
-    margin: 5px 0;
+    margin: 2px 0;
     resize: none;
+    clear: both;
 }
 
 button {

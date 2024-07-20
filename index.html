@@ -16,13 +16,14 @@
         <br />
         <label for="tableSize">表格大小:</label>
         <input type="number" id="tableSize" value="5" min="1" onchange="generateForm()">
-        <form id="dataForm" onsubmit="event.preventDefault(); generateTable();">
+        <form id="dataForm" onsubmit="event.preventDefault();">
             <div id="formArea">
                 <!-- Initial form generation -->
                 <script>generateForm();</script>
             </div>
             <br>
-            <button type="submit">生成 Bingo</button>
+            <button onclick="generateTable()">生成 Bingo</button>
+            <button onclick="generateRandomTable()">生成随机 Bingo</button>
         </form>
         <div id="result"></div>
     </div>

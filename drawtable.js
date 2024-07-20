@@ -174,3 +174,44 @@ function generateForm() {
     document.getElementById("formArea").innerHTML = formHTML;
 }
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+    }
+}
+
+function generateRandomTable() {
+    const tableSize = parseInt(document.getElementById("tableSize").value);
+    const cells = [];
+    // Collect all cell values
+    for (let i = 0; i < tableSize; i++) {
+        for (let j = 0; j < tableSize; j++) {
+            const cellId = `cell-${i}-${j}`;
+            const cellValue = document.getElementById(cellId).value.trim();
+            cells.push(cellValue || ' '); // Replace empty values with a space
+        }
+    }
+
+        // Generate the table HTML using the shuffled cells
+    const tableHTML = generateTableHTML(tableSize, cells);
+
+    shuffleArray(cells); // Shuffle the cell contents
+
+    // Create a visible div offscreen to render the table for image generation
+    let visibleDiv = document.createElement("div");
+    visibleDiv.style.position = 'absolute';
+    visibleDiv.style.left = '-9999px'; // Place it offscreen
+    visibleDiv.innerHTML = tableHTML;
+
+    const cellElements = visibleDiv.querySelectorAll('.output-table td div');
+    cellElements.forEach((div, index) => {
+        div.innerHTML = cells[index]; // Populate the table with shuffled contents
+    });
+
+    // Generate image from the offscreen div
+    generateImageFromTable(visibleDiv.innerHTML);
+    document.body.append(visibleDiv);
+    document.body.removeChild(visibleDiv);
+
+}

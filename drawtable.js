@@ -24,7 +24,9 @@ function generateTableHTML(tableSize) {
     const baseFontSize = cellSize / 5; // Base font size in pixels
 
     // Get the table title
-    const tableTitle = document.getElementById("tableTitle").value;
+    const separateTableTitle = document.getElementById("tableTitle").value.split('\n');
+    const tableTitleRowCount = separateTableTitle.length;
+    const tableTitle = separateTableTitle.map(part => `<p>${part}</p>`).join("");
 
     let tableHTML = `
         <style>
@@ -55,11 +57,15 @@ function generateTableHTML(tableSize) {
                 text-align: center;
             }
             .table-title {
-                font-size: ${cellSize/3}px;
+                font-size: ${Math.max(cellSize/3/(tableTitleRowCount**0.33),cellSize/15)}px;
                 font-weight: bold;
                 margin-bottom: 10px;
                 text-align: center;
             }
+            .table-title p {
+                line-height:${Math.max(cellSize/4/(tableTitleRowCount**0.5),3)}px;
+            }
+
         </style>
     `;
 
